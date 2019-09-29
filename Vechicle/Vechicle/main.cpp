@@ -3,6 +3,7 @@
 #include <QQmlContext>
 
 #include "helpers/settings.h"
+#include "helpers/signer.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,6 +27,10 @@ int main(int argc, char *argv[])
     QScopedPointer<Settings> settings_ptr(new Settings(nullptr, isDebug));
     Settings * settings = settings_ptr.data();
     engine.rootContext()->setContextProperty("settings", settings);
+
+    QScopedPointer<Signer> signer_ptr(new Signer(nullptr));
+    Signer * signer = signer_ptr.data();
+    engine.rootContext()->setContextProperty("signer", signer);
 
     engine.load(url);
     return app.exec();
