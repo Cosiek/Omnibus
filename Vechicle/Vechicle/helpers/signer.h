@@ -12,6 +12,7 @@ public:
 
     Q_INVOKABLE QString getSignature(QString);
     Q_INVOKABLE QString obscure(QString, QString);
+    Q_INVOKABLE bool hasKey();
 private:
     QCryptographicHash::Algorithm algorithm;
     QString key;

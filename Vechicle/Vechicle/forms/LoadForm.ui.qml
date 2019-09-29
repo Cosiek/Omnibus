@@ -4,6 +4,7 @@ import QtQuick.Controls 2.3
 Item {
     id: element
     property alias loadFormText: loadFormText
+    property alias loadFormBusyIndicator: loadFormBusyIndicator
 
     BusyIndicator {
         id: loadFormBusyIndicator

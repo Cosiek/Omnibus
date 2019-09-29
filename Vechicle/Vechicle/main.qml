@@ -10,7 +10,7 @@ ApplicationWindow {
 
     StackView {
         id: stackView
-        initialItem: "forms/LoadForm.ui.qml"
+        initialItem: "forms/Load.qml"
         anchors.fill: parent
     }
 }

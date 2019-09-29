@@ -12,8 +12,7 @@ Signer::Signer(QObject *parent) : QObject(parent){
 }
 
 
-QString Signer::getSignature(QString dataJson)
-{
+QString Signer::getSignature(QString dataJson){
     // unpack
     QJsonDocument jsonDocument(QJsonDocument::fromJson(dataJson.toUtf8()));
     QJsonObject ob = jsonDocument.object();
@@ -37,16 +36,14 @@ QString Signer::getSignature(QString dataJson)
     return code.result().toHex();
 }
 
-QString Signer::obscure(QString password, QString key)
-{
+QString Signer::obscure(QString password, QString key){
     QMessageAuthenticationCode code(this->algorithm);
     code.setKey(key.toUtf8());
     code.addData(password.toUtf8());
     return code.result().toHex();
 }
 
-QString Signer::getKeyFromFile()
-{
+QString Signer::getKeyFromFile(){
     // TODO: consider moving file name elsewhere
     QFile file("v_scrt.txt");
     QString fileContent;
@@ -62,4 +59,9 @@ QString Signer::getKeyFromFile()
         return QString();
     }
     return fileContent;
+}
+
+
+bool Signer::hasKey(){
+    return this->key.length() > 0;
 }
