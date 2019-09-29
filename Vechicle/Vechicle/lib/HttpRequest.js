@@ -1,5 +1,5 @@
 
-var SERVER_DOMAIN = "http://127.0.0.1:8080"
+Qt.include("Constances.js")
 
 function send(url, data, success, fial){
     // get id and key
