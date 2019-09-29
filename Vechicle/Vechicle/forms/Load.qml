@@ -1,6 +1,8 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.1
 
+import "../lib/HttpRequest.js" as HttpRequest
+
 
 LoadForm {
 
@@ -13,5 +15,11 @@ LoadForm {
             loadFormText.text = "Key file found...moving on."
         }
         // check internet access
+        HttpRequest.send(
+             "/device/validate",
+             {"say": "Hello!"},
+             function(xhr){ loadFormText.text = xhr.responseText },
+             function(xhr){ loadFormText.text = "No connection :(" }
+        );
     }
 }

@@ -4,5 +4,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>forms/Load.qml</file>
         <file>forms/LoadForm.ui.qml</file>
+        <file>lib/HttpRequest.js</file>
     </qresource>
 </RCC>
