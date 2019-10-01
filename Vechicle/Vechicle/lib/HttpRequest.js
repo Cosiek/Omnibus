@@ -3,7 +3,7 @@ Qt.include("Constances.js")
 
 function send(url, data, success, fial){
     // get id and key
-    var id = 'identifier';  // TODO: grrr.
+    var id = signer.getIdentifierFromFile();
     // make the request
     _send(url, data, id, success, fial);
 }

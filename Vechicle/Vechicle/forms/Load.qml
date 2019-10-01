@@ -14,12 +14,20 @@ LoadForm {
         } else {
             loadFormText.text = "Key file found...moving on."
         }
+        // chek if identifier file is present
+        var identifier = signer.getIdentifierFromFile();
+        if (!identifier){
+            loadFormText.text += "\nCan't find identifier file!";
+        } else {
+            loadFormText.text += "\nIdentifier file found...moving on."
+        }
+
         // check internet access
         HttpRequest.send(
              "/device/validate",
              {"say": "Hello!"},
-             function(xhr){ loadFormText.text = xhr.responseText },
-             function(xhr){ loadFormText.text = "No connection :(" }
+             function(xhr){ loadFormText.text += "\n" + xhr.responseText },
+             function(xhr){ loadFormText.text += "\nNo connection :(" }
         );
     }
 }

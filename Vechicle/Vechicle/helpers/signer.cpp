@@ -43,9 +43,8 @@ QString Signer::obscure(QString password, QString key){
     return code.result().toHex();
 }
 
-QString Signer::getKeyFromFile(){
-    // TODO: consider moving file name elsewhere
-    QFile file("v_scrt.txt");
+QString getFileContent(QString path){
+    QFile file(path);
     QString fileContent;
     if ( file.open(QIODevice::ReadOnly) ) {
         QString line;
@@ -59,6 +58,16 @@ QString Signer::getKeyFromFile(){
         return QString();
     }
     return fileContent;
+}
+
+QString Signer::getKeyFromFile(){
+    // TODO: consider moving file name elsewhere
+    return getFileContent("v_scrt.txt");
+}
+
+QString Signer::getIdentifierFromFile(){
+    // TODO: consider moving file name elsewhere
+    return getFileContent("v_id.txt");
 }
 
 
