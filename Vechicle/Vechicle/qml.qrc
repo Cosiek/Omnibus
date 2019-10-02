@@ -6,5 +6,7 @@
         <file>forms/LoadForm.ui.qml</file>
         <file>lib/HttpRequest.js</file>
         <file>lib/Constances.js</file>
+        <file>forms/Login.qml</file>
+        <file>forms/LoginForm.ui.qml</file>
     </qresource>
 </RCC>

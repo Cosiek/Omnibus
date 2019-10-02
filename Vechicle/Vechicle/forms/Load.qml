@@ -14,7 +14,7 @@ LoadForm {
         } else {
             loadFormText.text = "Key file found...moving on."
         }
-        // chek if identifier file is present
+        // check if identifier file is present
         var identifier = signer.getIdentifierFromFile();
         if (!identifier){
             loadFormText.text += "\nCan't find identifier file!";
@@ -26,7 +26,10 @@ LoadForm {
         HttpRequest.send(
              "/device/validate",
              {"say": "Hello!"},
-             function(xhr){ loadFormText.text += "\n" + xhr.responseText },
+             function(xhr){
+                 loadFormText.text += "\n" + xhr.responseText;
+                 stackView.push("Login.qml");
+             },
              function(xhr){ loadFormText.text += "\nNo connection :(" }
         );
     }
