@@ -4,8 +4,10 @@ import QtQuick.Controls 2.3
 ApplicationWindow {
     id: window
     visible: true
-    width: 640
-    height: 480
+    width: 300
+    height: 350
+    minimumHeight: 350
+    minimumWidth: 300
     title: qsTr("Stack")
 
     StackView {

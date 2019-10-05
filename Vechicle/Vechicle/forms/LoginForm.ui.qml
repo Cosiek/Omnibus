@@ -5,17 +5,17 @@ Item {
     id: element
     property alias loginButton: loginButton
     property alias passwordInput: passwordInput
-    property alias loginInput: loginInput
     property alias fastLoginButton2: fastLoginButton2
     property alias fastLoginButton1: fastLoginButton1
+    property alias loginComboBox: loginComboBox
 
     Column {
         id: column
         anchors.fill: parent
     }
 
-    TextInput {
-        id: textInput
+    Text {
+        id: header
         x: 165
         width: 105
         height: 20
@@ -27,30 +27,11 @@ Item {
         font.pixelSize: 16
     }
 
-    TextField {
-        id: loginInput
-        x: 100
-        text: qsTr("")
-        anchors.horizontalCenterOffset: 0
-        anchors.top: textInput.bottom
-        anchors.topMargin: 36
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
-    TextField {
-        id: passwordInput
-        x: 100
-        y: 281
-        text: qsTr("")
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: loginButton.top
-        anchors.bottomMargin: 18
-    }
-
     Button {
         id: loginButton
         x: 150
         y: 339
+        width: 200
         text: qsTr("zaloguj")
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
@@ -62,34 +43,11 @@ Item {
         x: 150
         width: 200
         height: 40
-        text: qsTr("Button")
+        text: qsTr("?")
         anchors.horizontalCenterOffset: 0
-        anchors.top: loginInput.bottom
-        anchors.topMargin: 35
+        anchors.top: loginComboBox.bottom
+        anchors.topMargin: 15
         anchors.horizontalCenter: parent.horizontalCenter
-    }
-
-    Text {
-        id: element1
-        y: 45
-        text: qsTr("Login")
-        anchors.left: loginInput.right
-        anchors.leftMargin: -199
-        anchors.bottom: loginInput.top
-        anchors.bottomMargin: 6
-        enabled: false
-        font.pixelSize: 12
-    }
-
-    Text {
-        id: element2
-        y: 342
-        text: qsTr("Hasło")
-        anchors.left: passwordInput.right
-        anchors.leftMargin: -200
-        anchors.bottom: passwordInput.top
-        anchors.bottomMargin: 6
-        font.pixelSize: 12
     }
 
     Button {
@@ -97,18 +55,77 @@ Item {
         x: 155
         width: 200
         height: 40
-        text: qsTr("Button")
+        text: qsTr("?")
         anchors.horizontalCenterOffset: 0
         anchors.top: fastLoginButton1.bottom
         anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Text {
+        id: element1
+        y: 45
+        text: qsTr("Login")
+        anchors.left: loginComboBox.right
+        anchors.leftMargin: -199
+        anchors.bottom: loginComboBox.top
+        anchors.bottomMargin: 6
+        enabled: false
+        font.pixelSize: 12
+    }
+
+    ComboBox {
+        id: loginComboBox
+        x: 250
+        width: 200
+        anchors.top: header.bottom
+        anchors.topMargin: 20
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Text {
+        id: element2
+        y: 350
+        text: qsTr("Hasło")
+        anchors.left: passwordBack.right
+        anchors.leftMargin: -200
+        anchors.bottom: passwordBack.top
+        anchors.bottomMargin: 6
+        font.pixelSize: 12
+    }
+
+    Rectangle {
+        id: passwordBack
+        x: 220
+        y: 209
+        width: 200
+        height: 40
+        color: "#dcdcdc"
+        anchors.bottom: loginButton.top
+        anchors.bottomMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        TextInput {
+            id: passwordInput
+            x: 154
+            y: 107
+            width: 200
+            height: 15
+            text: ""
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            echoMode: TextInput.Password
+            horizontalAlignment: Text.AlignHCenter
+        }
     }
 }
 
 /*##^##
 Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:1;anchors_height:400;anchors_width:200;anchors_x:110;anchors_y:33}
-D{i:2;anchors_y:8}D{i:3;anchors_y:110}D{i:6;anchors_y:156}D{i:7;anchors_x:221}D{i:8;anchors_x:220}
-D{i:9;anchors_y:210}
+D{i:2;anchors_y:8}D{i:4;anchors_y:156}D{i:5;anchors_y:156}D{i:6;anchors_x:221;anchors_y:210}
+D{i:7;anchors_x:221;anchors_y:64}D{i:8;anchors_x:220}D{i:10;anchors_height:40;anchors_width:200;anchors_x:154;anchors_y:107}
+D{i:9;anchors_y:64}
 }
 ##^##*/
+
