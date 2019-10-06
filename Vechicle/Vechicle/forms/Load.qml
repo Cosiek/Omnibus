@@ -24,13 +24,18 @@ LoadForm {
 
         // check internet access
         HttpRequest.send(
-             "/device/validate",
-             {"say": "Hello!"},
+             "/device/drivers",
+             {},
              function(xhr){
-                 loadFormText.text += "\n" + xhr.responseText;
-                 stackView.push("Login.qml");
+                 var d = JSON.parse(xhr.responseText);
+                 stackView.push("Login.qml",
+                    {'drivers': d.drivers, 'preferredDrivers': d.preferred}
+                 );
              },
-             function(xhr){ loadFormText.text += "\nNo connection :(" }
+             function(xhr){
+                 // TODO: check response status!
+                 loadFormText.text += "\nNo connection :("
+             }
         );
     }
 }

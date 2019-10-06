@@ -78,6 +78,9 @@ Item {
         id: loginComboBox
         x: 250
         width: 200
+        textRole: "text"
+        model: ListModel {}
+        editable: true
         anchors.top: header.bottom
         anchors.topMargin: 20
         anchors.horizontalCenter: parent.horizontalCenter
@@ -124,8 +127,8 @@ Item {
 Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:1;anchors_height:400;anchors_width:200;anchors_x:110;anchors_y:33}
 D{i:2;anchors_y:8}D{i:4;anchors_y:156}D{i:5;anchors_y:156}D{i:6;anchors_x:221;anchors_y:210}
-D{i:7;anchors_x:221;anchors_y:64}D{i:8;anchors_x:220}D{i:10;anchors_height:40;anchors_width:200;anchors_x:154;anchors_y:107}
-D{i:9;anchors_y:64}
+D{i:7;anchors_x:221;anchors_y:64}D{i:9;anchors_x:220}D{i:11;anchors_height:40;anchors_width:200;anchors_x:154;anchors_y:107}
+D{i:10;anchors_y:64}
 }
 ##^##*/
 
