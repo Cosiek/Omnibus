@@ -26,6 +26,8 @@ LoginForm {
     }
 
     StackView.onActivated: {
+        // clear any previous inputed passwords
+        passwordInput.text = '';
         // prepare success callback
         function success(xhr){
             // clear previous answers
@@ -58,7 +60,7 @@ LoginForm {
             // display apropriate message
             if (xhr.status === 0){
                 // connection failed - inform we're going offline
-                statusText.text = "Connection to srver failed."
+                statusText.text = "Connection to server failed."
                 statusText.text +="\nWrite login by hand."
             }
         }
@@ -66,5 +68,34 @@ LoginForm {
         // ask the server for drivers list
         lockForm();
         HttpRequest.send("/device/drivers", {}, success, fial);
+    }
+
+    loginButton.onClicked: {
+        console.log("Clicked")
+        lockForm();
+        // prepare data
+        var data = {
+            'login': loginComboBox.model.get(loginComboBox.currentIndex).id,
+            'password': passwordInput.text,  // TODO: obscurify
+        }
+        // prepare success callback
+        function success(xhr){
+            statusText.text = "Login successful."
+            // clear password
+            passwordInput.text = '';
+            // TODO: go further
+        }
+        // prepare fial calback
+        function fial(xhr){
+            if (xhr.status === 0 || xhr.status === 502){  // no server
+                statusText.text = "Connection to server failed.";
+                statusText.text +="\nTry again?";
+            } else if (xhr.status === 403){  // forbidden
+                statusText.text = "Wrong login or password.";
+            }
+            unlockForm();
+        }
+
+        HttpRequest.send("/device/login", data, success, fial);
     }
 }
