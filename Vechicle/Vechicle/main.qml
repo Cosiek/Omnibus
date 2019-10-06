@@ -8,7 +8,7 @@ ApplicationWindow {
     height: 350
     minimumHeight: 350
     minimumWidth: 300
-    title: qsTr("Stack")
+    title: qsTr("Omnibus - Vechicle")
 
     StackView {
         id: stackView
