@@ -9,8 +9,8 @@
 Signer::Signer(QObject *parent) : QObject(parent){
     this->algorithm = QCryptographicHash::Md5;
     this->key = this->getKeyFromFile();
+    this->obscureKey = this->getObscureKeyFromFile();
 }
-
 
 QString Signer::getSignature(QString dataJson){
     // unpack
@@ -36,9 +36,9 @@ QString Signer::getSignature(QString dataJson){
     return code.result().toHex();
 }
 
-QString Signer::obscure(QString password, QString key){
+QString Signer::obscure(QString password){
     QMessageAuthenticationCode code(this->algorithm);
-    code.setKey(key.toUtf8());
+    code.setKey(this->obscureKey.toUtf8());
     code.addData(password.toUtf8());
     return code.result().toHex();
 }
@@ -70,6 +70,10 @@ QString Signer::getIdentifierFromFile(){
     return getFileContent("v_id.txt");
 }
 
+QString Signer::getObscureKeyFromFile(){
+    // TODO: consider moving file name elsewhere
+    return getFileContent("v_obscr.txt");
+}
 
 bool Signer::hasKey(){
     return this->key.length() > 0;

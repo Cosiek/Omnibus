@@ -11,13 +11,15 @@ public:
     explicit Signer(QObject *parent = nullptr);
 
     Q_INVOKABLE QString getSignature(QString);
-    Q_INVOKABLE QString obscure(QString, QString);
+    Q_INVOKABLE QString obscure(QString);
     Q_INVOKABLE bool hasKey();
     Q_INVOKABLE QString getIdentifierFromFile();
 private:
     QCryptographicHash::Algorithm algorithm;
     QString key;
+    QString obscureKey;
     QString getKeyFromFile();
+    QString getObscureKeyFromFile();
 signals:
 
 public slots:

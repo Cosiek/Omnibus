@@ -76,7 +76,7 @@ LoginForm {
         // prepare data
         var data = {
             'login': loginComboBox.model.get(loginComboBox.currentIndex).id,
-            'password': passwordInput.text,  // TODO: obscurify
+            'password': signer.obscure(passwordInput.text),
         }
         // prepare success callback
         function success(xhr){
