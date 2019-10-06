@@ -5,9 +5,9 @@ Item {
     id: element
     property alias loginButton: loginButton
     property alias passwordInput: passwordInput
-    property alias fastLoginButton2: fastLoginButton2
-    property alias fastLoginButton1: fastLoginButton1
     property alias loginComboBox: loginComboBox
+    property alias busyIndicator: busyIndicator
+    property alias statusText: statusText
 
     Column {
         id: column
@@ -33,33 +33,10 @@ Item {
         y: 339
         width: 200
         text: qsTr("zaloguj")
+        enabled: false
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 21
-    }
-
-    Button {
-        id: fastLoginButton1
-        x: 150
-        width: 200
-        height: 40
-        text: qsTr("?")
-        anchors.horizontalCenterOffset: 0
-        anchors.top: loginComboBox.bottom
-        anchors.topMargin: 15
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
-    Button {
-        id: fastLoginButton2
-        x: 155
-        width: 200
-        height: 40
-        text: qsTr("?")
-        anchors.horizontalCenterOffset: 0
-        anchors.top: fastLoginButton1.bottom
-        anchors.topMargin: 20
-        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Text {
@@ -78,6 +55,7 @@ Item {
         id: loginComboBox
         x: 250
         width: 200
+        enabled: false
         textRole: "text"
         model: ListModel {}
         editable: true
@@ -121,14 +99,35 @@ Item {
             horizontalAlignment: Text.AlignHCenter
         }
     }
+
+    BusyIndicator {
+        id: busyIndicator
+        x: 284
+        width: 100
+        height: 100
+        anchors.top: loginComboBox.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Text {
+        id: statusText
+        x: 308
+        text: qsTr(" ")
+        horizontalAlignment: Text.AlignHCenter
+        anchors.top: busyIndicator.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize: 12
+    }
 }
 
 /*##^##
 Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:1;anchors_height:400;anchors_width:200;anchors_x:110;anchors_y:33}
-D{i:2;anchors_y:8}D{i:4;anchors_y:156}D{i:5;anchors_y:156}D{i:6;anchors_x:221;anchors_y:210}
-D{i:7;anchors_x:221;anchors_y:64}D{i:9;anchors_x:220}D{i:11;anchors_height:40;anchors_width:200;anchors_x:154;anchors_y:107}
-D{i:10;anchors_y:64}
+D{i:2;anchors_y:8}D{i:4;anchors_x:221;anchors_y:210}D{i:5;anchors_x:221;anchors_y:64}
+D{i:7;anchors_x:220}D{i:9;anchors_height:40;anchors_width:200;anchors_x:154;anchors_y:107}
+D{i:8;anchors_y:64}D{i:10;anchors_y:181}D{i:11;anchors_y:241}
 }
 ##^##*/
 
