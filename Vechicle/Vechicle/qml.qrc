@@ -8,5 +8,7 @@
         <file>lib/Constances.js</file>
         <file>forms/Login.qml</file>
         <file>forms/LoginForm.ui.qml</file>
+        <file>forms/TaskChoice.qml</file>
+        <file>forms/TaskChoiceForm.ui.qml</file>
     </qresource>
 </RCC>

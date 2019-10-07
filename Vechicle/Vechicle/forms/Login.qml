@@ -83,7 +83,7 @@ LoginForm {
             statusText.text = "Login successful."
             // clear password
             passwordInput.text = '';
-            // TODO: go further
+            stackView.push("TaskChoice.qml");
         }
         // prepare fial calback
         function fial(xhr){
