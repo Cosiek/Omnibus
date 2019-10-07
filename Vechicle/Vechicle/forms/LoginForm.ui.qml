@@ -9,11 +9,6 @@ Item {
     property alias busyIndicator: busyIndicator
     property alias statusText: statusText
 
-    Column {
-        id: column
-        anchors.fill: parent
-    }
-
     Text {
         id: header
         x: 165
