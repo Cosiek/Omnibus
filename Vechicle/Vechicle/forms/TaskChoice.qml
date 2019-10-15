@@ -61,7 +61,7 @@ TaskChoiceForm {
         HttpRequest.send("/device/tasks", {}, success, fial);
     }
 
-    lineChoiceComboBox.onCurrentTextChanged: {
+    function resetBrigadesInput(){
         // clear brigades select
         brigadeChoiceComboBox.model.clear();
         // load preferred brigade...
@@ -83,4 +83,13 @@ TaskChoiceForm {
 
     }
 
+    lineChoiceComboBox.onCurrentTextChanged: {
+        resetBrigadesInput()
+    }
+
+    lineChoiceComboBox.contentItem.onActiveFocusChanged: {
+        if (!lineChoiceComboBox.focus){
+            resetBrigadesInput()
+        }
+    }
 }
