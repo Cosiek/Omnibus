@@ -61,22 +61,22 @@ TaskChoiceForm {
         HttpRequest.send("/device/tasks", {}, success, fial);
     }
 
-    function resetBrigadesInput(){
+    function resetBrigadesInput(lineText){
         // clear brigades select
         brigadeChoiceComboBox.model.clear();
         // load preferred brigade...
         if (this.preferred !== null && this.preferred[1] !== null){
             // ...if preferred line was chosen
-            if (this.preferred[0] === lineChoiceComboBox.currentText){
+            if (this.preferred[0] === lineText){
                 var d = this.preferred[1];
                 brigadeChoiceComboBox.model.append({text: d, id: d});
                 brigadeChoiceComboBox.currentIndex = 0;
             }
         }
         // load other brigades
-        for (var idx in taskChoiceForm.tasks[lineChoiceComboBox.currentText]){
-            d = taskChoiceForm.tasks[lineChoiceComboBox.currentText][idx];
-            if (d !== brigadeChoiceComboBox.currentText){
+        for (var idx in taskChoiceForm.tasks[lineText]){
+            d = taskChoiceForm.tasks[lineText][idx];
+            if (d !== lineText){
                 brigadeChoiceComboBox.model.append({text: d, id: d});
             }
         }
@@ -84,12 +84,12 @@ TaskChoiceForm {
     }
 
     lineChoiceComboBox.onCurrentTextChanged: {
-        resetBrigadesInput()
+        resetBrigadesInput(lineChoiceComboBox.currentText);
     }
 
     lineChoiceComboBox.contentItem.onActiveFocusChanged: {
         if (!lineChoiceComboBox.focus){
-            resetBrigadesInput()
+            resetBrigadesInput(lineChoiceComboBox.contentItem.text);
         }
     }
 }
