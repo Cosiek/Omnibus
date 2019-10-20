@@ -92,4 +92,44 @@ TaskChoiceForm {
             resetBrigadesInput(lineChoiceComboBox.contentItem.text);
         }
     }
+
+    technicalDriveButton.onClicked: {
+        console.log("technicalDriveButton")
+        lockForm()
+
+        function success(xhr){
+            console.log("technical drive - success")
+            stackView.push("Route.qml", {"routeData": response});
+        }
+
+        function fial(xhr){
+            console.log("technical drive - fial")
+            unlockForm()
+        }
+
+        HttpRequest.send("/device/technical_drive", {}, success, fial);
+    }
+
+    submitButton.onClicked: {
+        console.log("submitButton clicked")
+        lockForm()
+
+        function success(xhr){
+            console.log("submit - success")
+            var response = JSON.parse(xhr.responseText)
+            stackView.push("Route.qml", {"routeData": response});
+        }
+
+        function fial(xhr){
+            console.log("task - fial")
+            unlockForm()
+        }
+
+        data = {
+            'line': lineChoiceComboBox.contentItem.text,
+            'brigade': brigadeChoiceComboBox.contentItem.text,
+        }
+
+        HttpRequest.send("/device/task", data, success, fial)
+    }
 }

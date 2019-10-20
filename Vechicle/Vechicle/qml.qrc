@@ -10,5 +10,7 @@
         <file>forms/LoginForm.ui.qml</file>
         <file>forms/TaskChoice.qml</file>
         <file>forms/TaskChoiceForm.ui.qml</file>
+        <file>forms/Route.qml</file>
+        <file>forms/RouteForm.ui.qml</file>
     </qresource>
 </RCC>
